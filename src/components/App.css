@@ -1,0 +1,40 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app input, .App button {
+    margin: 20px;
+    padding: 10px 20px;
+    border: 2px solid gray;
+    background-color: #fff;
+    transition: .3s;
+}
+
+.app button {
+    cursor: pointer;
+}
+
+.app button:hover {
+    background-color: #000;
+    color: white;
+    border-color: black;
+}
+
+.result {
+    border-top: 2px solid #ddd;
+}
+
+.result h1 {
+    margin-bottom: 50px;
+}
+
+.result h1, .result h2 {
+    font-weight: normal;
+}
+
+.result em {
+    font-weight: bold;
+}

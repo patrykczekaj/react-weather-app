@@ -54,7 +54,7 @@ const App = () => {
   }
 
   return (
-    <div className='App'>
+    <div className='app'>
       <Form value={value} change={handleInputChange} submit={handleCitySubmit}/>
       <Result weather={{error, date, sunrise, sunset, temp, pressure, wind, city}}/>
     </div>

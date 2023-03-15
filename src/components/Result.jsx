@@ -12,15 +12,15 @@ const Result = ({ weather }) => {
         const sunsetTime = new Date(sunset * 1000).toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'});
 
         content = (
-            <div>
-                <h3>Weather for the city <em>{city}</em></h3>
-                <h4>Day and time: {date}</h4>
-                <h4>Current temperature: {temp} &#176;C</h4>
-                <h4>Sunrise today: {sunriseTime}</h4>
-                <h4>Sunset today: {sunsetTime}</h4>
-                <h4>Current wind strength: {wind} m/s</h4>
-                <h4>Current pressure: {pressure} hPa</h4>
-            </div>
+            <>
+                <h1>Weather for the city <em>{city}</em></h1>
+                <h2>Day and time: {date}</h2>
+                <h2>Current temperature: {temp} &#176;C</h2>
+                <h2>Sunrise today: {sunriseTime}</h2>
+                <h2>Sunset today: {sunsetTime}</h2>
+                <h2>Current wind strength: {wind} m/s</h2>
+                <h2>Current pressure: {pressure} hPa</h2>
+            </>
         )
     }
 
