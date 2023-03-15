@@ -3,6 +3,8 @@ import Form from './Form';
 import Result from './Result';
 import './App.css';
 
+const APIKey = 'ea5196d684737306b38c3fa85e8c9aad';
+
 const App = () => {
 
   const [value, setValue] = useState('');
@@ -13,9 +15,9 @@ const App = () => {
   const [temp, setTemp] = useState('');
   const [pressure, setPressure] = useState('');
   const [wind, setWind] = useState('');
-  const [err, setErr] = useState('');
+  const [error, setError] = useState('');
 
-  const API = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=ea5196d684737306b38c3fa85e8c9aad`
+  const API = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${APIKey}&units=metric`;
 
   const handleInputChange = (e) => {
     setValue(e.target.value)
@@ -32,15 +34,29 @@ const App = () => {
       throw Error('an error occured')
     })
     .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
+    .then(data => {
+        const time = new Date().toLocaleString();
+
+        setError(false);
+        setDate(time);
+        setSunrise(data.sys.sunrise);
+        setSunset(data.sys.sunset);
+        setTemp(data.main.temp);
+        setPressure(data.main.pressure);
+        setWind(data.wind.speed);
+        setCity(value);
+    })
+    .catch(err => {
+        setError(true);
+        setCity(value);
+    })
 
   }
 
   return (
     <div className='App'>
       <Form value={value} change={handleInputChange} submit={handleCitySubmit}/>
-      <Result />
+      <Result weather={{error, date, sunrise, sunset, temp, pressure, wind, city}}/>
     </div>
   );
 };
